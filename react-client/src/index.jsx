@@ -10,28 +10,80 @@ class App extends React.Component {
     super(props);
     this.state = { 
       pokemon: {},
-      pokedex: []
+      pokedex: [],
+      user: ''
     }
+    // this.setUserName = this.setUserName.bind(this);
+    this.catchPokemon = this.catchPokemon.bind(this);
   }
 
   componentDidMount() {
-  console.log('hello world');
+    // this.setUserName();
+    let username = prompt('Enter a username');
+    this.setState({
+      user: username
+    })
+    //set alert to sign in a user name
+      //axios.get the username to load their pokedex
+      console.log(username);
+    axios.get('/api/user', {
+      params: {
+        username
+      }
+    })
+      .then((res) => {
+        this.setState({
+          pokedex: res.data
+        })
+      })
   }
-  onClick() {
-    console.log(this.state.pokemon);
+
+  retrievePokeDex() {
+    //axios get method to get pokedex based on
+    //user name
+  }
+
+  findPokemon() {
     axios.get('/api/pokemon')
     .then((res) => {
       this.setState({
         pokemon: res.data
-      })
+      });
     })
+    .catch((err) => {
+      return err;
+    });
+  }
+
+  catchPokemon() {
+    let catchRate = Math.floor(Math.random() * 100);
+    if (catchRate >= 50) {
+      alert(`You caught ${this.state.pokemon.name}!!`)
+      axios.post('/api/user', {params: {pokemon: this.state.pokemon, username: this.state.user}})
+      .then((res) => {
+        this.setState({
+          pokedex: res.data
+        });
+        console.log('the res in catchpokemon ', res.data);
+      })
+      .catch((err) => {
+        return err;
+      });
+    } else {
+      alert(`you did not catch it, ${this.state.pokemon.name} ran away`);
+      this.setState({
+        pokemon: {}
+      })
+    }
   }
 
   render () {
+    console.log(this.state.pokedex);
     return (<div>
       <h1>Pokemon Stay</h1>
-      <Pokemon pokemon={this.state.pokemon} />
-      <button onClick={this.onClick.bind(this)}>Find a Pokemon</button>
+      <Pokemon pokemon={this.state.pokemon} onCatch={this.catchPokemon}/>
+      <button onClick={this.findPokemon.bind(this)}>Find a Pokemon</button>
+      {/* <button onClick={}></button> */}
       {/* <List items={this.state.pokedex}/> */}
     </div>)
   }

@@ -3,8 +3,11 @@ const controller = require('./controllers.js');
 
 router
   .route('/pokemon')
-  .get(controller.get);
+  .get(controller.pokemon.get);
 
-// router
-//   .route('/user')
+router
+  .route('/user')
+  .get(controller.user.get)
+  .post(controller.user.post)
+  .delete(controller.user.delete);
   module.exports = router;
