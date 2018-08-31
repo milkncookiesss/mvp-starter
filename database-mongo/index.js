@@ -11,10 +11,9 @@ db.once('open', function() {
 });
 
 const pokemonSchema = mongoose.Schema({
-  poke_id: Number,
+  poke_id: {type: Number, unique: true},
   poke_name: String,
   poke_img: String,
-  description: String
 });
 
 const Pokemon = mongoose.model('Pokemon', pokemonSchema);
