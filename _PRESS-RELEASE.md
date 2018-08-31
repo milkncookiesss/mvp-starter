@@ -17,28 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  Pokemon Stay
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Market is for introverts who do not want to go ourside. They get to stay home and catch Pokemon.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+Catch Pokemon at home at the comfort of your home without needing to deal with outside folks.  You'll never know which one will show up.
+
 
 ## Problem ##
-  > Describe the problem your product solves.
+Inntroverted people are able to catch Pokemon without leaving the comfort of their homes.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+The consumer can find Pokemon with a press of a button and try to catch them.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+"I don't even need to leave my couch to catch Pokemon!"
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+Login to our site then generate a Pokemon then try to catch it if you can!
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+"I gained 20 pounds but I caught all 50 Pokemans!"
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+Enjoy our product! Please look into our other Stay products.

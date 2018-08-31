@@ -1,24 +1,25 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test', {useMongoClient: true});
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', function() {
   console.log('mongoose connection error');
 });
-
 db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
+const pokemonSchema = mongoose.Schema({
+  poke_id: Number,
+  poke_name: String,
+  poke_img: String,
   description: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+const Pokemon = mongoose.model('Pokemon', pokemonSchema);
 
-var selectAll = function(callback) {
+const selectAll = function(callback) {
   Item.find({}, function(err, items) {
     if(err) {
       callback(err, null);
