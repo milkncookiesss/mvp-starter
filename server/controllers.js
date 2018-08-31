@@ -15,7 +15,7 @@ module.exports = {
           id: response.id
         }
         console.log('the pokemon ', pokemon);
-        res.send(pokemon);
+        res.status(200).send(pokemon);
       })
       .catch((err) => {
         console.log('err ', err);

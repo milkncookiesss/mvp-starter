@@ -10,7 +10,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname + '/../react-client/dist')));
-app.use('/', router);
+app.use('/api', router);
 
 // app.get('/items', function (req, res) {
 //   items.selectAll(function(err, data) {
