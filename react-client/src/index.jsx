@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
 import Pokemon from './components/Pokemon.jsx';
+import PokedexList from './components/Pokedex.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -11,7 +11,8 @@ class App extends React.Component {
     this.state = { 
       pokemon: {},
       pokedex: [],
-      user: ''
+      user: '',
+      modal: false
     }
     // this.setUserName = this.setUserName.bind(this);
     this.catchPokemon = this.catchPokemon.bind(this);
@@ -47,9 +48,13 @@ class App extends React.Component {
         pokedex: res.data
       })
     })
+    this.setState({
+      modal: !this.state.modal
+    })
   }
 
   findPokemon() {
+    // console.log('clicked');
     axios.get('/api/pokemon')
     .then((res) => {
       this.setState({
@@ -70,7 +75,6 @@ class App extends React.Component {
         this.setState({
           pokedex: res.data
         });
-        console.log('the res in catchpokemon ', res.data);
       })
       .catch((err) => {
         return err;
@@ -83,13 +87,15 @@ class App extends React.Component {
     }
   }
 
-  render () {
-    console.log(this.state.pokedex);
-    return (<div>
+  render() {
+    return (
+    <div>
       <h1>Pokemon Stay</h1>
+      {/* <PokedexList pokedex={this.state.pokedex} /> */}
       <Pokemon pokemon={this.state.pokemon} onCatch={this.catchPokemon}/>
       <button onClick={this.findPokemon.bind(this)}>Find a Pokemon</button>
       <button onClick={this.pokedex}>check pokedex</button>
+      {this.state.modal ? <PokedexList pokedex={this.state.pokedex}/>: null}
       {/* <List items={this.state.pokedex}/> */}
     </div>)
   }

@@ -10,4 +10,5 @@ router
   .get(controller.user.get)
   .post(controller.user.post)
   .delete(controller.user.delete);
-  module.exports = router;
+
+module.exports = router;

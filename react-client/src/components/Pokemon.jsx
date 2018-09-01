@@ -12,12 +12,12 @@ class Pokemon extends React.Component {
     super(props)
     this.state = {
       pokemon: this.props.pokemon,
-      isHidden: true
+      // isHidden: true
     }
   }
   render() {
     return (
-    <div>
+    <div className="middle">
     <h2>{this.props.pokemon.name}</h2>
     <img src={this.props.pokemon.img} width="250" height="250" onClick={this.props.onCatch}/>
   </div>
