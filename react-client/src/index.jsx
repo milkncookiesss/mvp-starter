@@ -15,17 +15,18 @@ class App extends React.Component {
     }
     // this.setUserName = this.setUserName.bind(this);
     this.catchPokemon = this.catchPokemon.bind(this);
+    this.pokedex = this.pokedex.bind(this);
   }
 
   componentDidMount() {
     // this.setUserName();
-    let username = prompt('Enter a username');
+    let username = prompt('Enter a username').toLowerCase();
     this.setState({
       user: username
     })
     //set alert to sign in a user name
       //axios.get the username to load their pokedex
-      console.log(username);
+      // console.log(username);
     axios.get('/api/user', {
       params: {
         username
@@ -35,12 +36,17 @@ class App extends React.Component {
         this.setState({
           pokedex: res.data
         })
+        console.log('the pokedex ', this.state.pokedex);
       })
   }
 
-  retrievePokeDex() {
-    //axios get method to get pokedex based on
-    //user name
+  pokedex() {
+    axios.get('/api/user', {params: {username: this.state.user}})
+    .then((res) => {
+      this.setState({
+        pokedex: res.data
+      })
+    })
   }
 
   findPokemon() {
@@ -83,7 +89,7 @@ class App extends React.Component {
       <h1>Pokemon Stay</h1>
       <Pokemon pokemon={this.state.pokemon} onCatch={this.catchPokemon}/>
       <button onClick={this.findPokemon.bind(this)}>Find a Pokemon</button>
-      {/* <button onClick={}></button> */}
+      <button onClick={this.pokedex}>check pokedex</button>
       {/* <List items={this.state.pokedex}/> */}
     </div>)
   }
