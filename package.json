@@ -23,7 +23,7 @@
     "express": "^4.15.0",
     "helmet": "^3.13.0",
     "jquery": "^3.1.1",
-    "mongoose": "^4.8.6",
+    "mongoose": "^5.7.5",
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "pokedex-promise-v2": "^3.1.1",
